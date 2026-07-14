@@ -14,6 +14,14 @@ WHITE=(255,255,255)
 BLACK=(0,0,0)
 RED=(255,0,0)
 YELLOW=(255,255,0)
+FPS=60
+VEL=5
+Bullet_vel=7
+Maxbullets=3
+Spaceship_width,spaceship_height=55,40
+HEALTH_FONT=pygame.font.SysFont("comicsans",40)
+WINNER_FONT=pygame.font.SysFont("comicsans",100)
+
 
 background=pygame.image.load(os.path.join("Assets","background.png"))
 BORDER=pygame.Rect(WIDTH//2-5,0,10,HEIGHT)
