@@ -36,29 +36,58 @@ YELLOW_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP
 RED_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMAGE,(spaceship_width,spaceship_height)),-90)
 
 def yellow_handle_movment(keys_pressed,yellow):
-    if keys_pressed[pygame.k_a]and yellow.x-VEL>0: #left
+    if keys_pressed[pygame.K_a]and yellow.x-VEL>0: #left
         yellow.x-=VEL
 
-    if keys_pressed[pygame.k_s]and yellow.y-VEL+yellow.height<BORDER: #down
+    if keys_pressed[pygame.K_s]and yellow.y+VEL+yellow.height<HEIGHT-15: #down
         yellow.y-=VEL
     
-    if keys_pressed[pygame.k_d]and yellow.x+VEL+yellow.widthBORDER.x: #right
+    if keys_pressed[pygame.K_d]and yellow.x+VEL+yellow.width<BORDER.x: #right
         yellow.x+=VEL
 
-    if keys_pressed[pygame.k_a]and yellow.x+VEL>0: #up
-        yellow.x+=VEL
+    if keys_pressed[pygame.K_w]and yellow.y-VEL>0: #up
+        yellow.y+=VEL
+
+
+def yellow_handle_movment(keys_pressed,yellow):
+    if keys_pressed[pygame.K_a]and yellow.x-VEL>0: #left
+        yellow.x-=VEL
+
+    if keys_pressed[pygame.K_s]and yellow.y+VEL+yellow.height<HEIGHT-15: #down
+        yellow.y-=VEL
+    
+    if keys_pressed[pygame.K_d]and yellow.x+VEL+red.width<BORDER.x: #right
+        red.x+=VEL
+
+    if keys_pressed[pygame.K_w]and red.y-VEL>0: #up
+        red.y+=VEL
+
+def draw_window(yellow,red):
+    WIN.blit(background,(0,0))
+    pygame.draw.rect(WIN,BLACK,BORDER)
+    WIN.blit(YELLOW_SPACESHIP,(100,200))
+    WIN.blit(RED_SPACESHIP,(800,200))
+    pygame.display.update()
+
 
 
 def main():
+    yellow=pygame.Rect(100,200,spaceship_width,spaceship_height)
+    red=pygame.Rect(800,200,spaceship_width,spaceship_height)
+    clock=pygame.time.Clock()
 
 
     run=True
     while run:
+        clock.tick(FPS)
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 #if it is quit the pygame
-                pygame.quit()
-            exit()
+                run=False
+        keys_pressed=pygame.key.get_pressed()
+        yellow_handle_movment(keys_pressed,yellow)
+        draw_window(yellow,red)
+    pygame.quit()
 
 if __name__=="__main__":
     main()
