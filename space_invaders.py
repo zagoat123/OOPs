@@ -40,23 +40,23 @@ def yellow_handle_movment(keys_pressed,yellow):
         yellow.x-=VEL
 
     if keys_pressed[pygame.K_s]and yellow.y+VEL+yellow.height<HEIGHT-15: #down
-        yellow.y-=VEL
+        yellow.y+=VEL
     
     if keys_pressed[pygame.K_d]and yellow.x+VEL+yellow.width<BORDER.x: #right
         yellow.x+=VEL
 
     if keys_pressed[pygame.K_w]and yellow.y-VEL>0: #up
-        yellow.y+=VEL
-
-
-def yellow_handle_movment(keys_pressed,yellow):
-    if keys_pressed[pygame.K_a]and yellow.x-VEL>0: #left
-        yellow.x-=VEL
-
-    if keys_pressed[pygame.K_s]and yellow.y+VEL+yellow.height<HEIGHT-15: #down
         yellow.y-=VEL
+
+
+def red_handle_movment(keys_pressed,red):
+    if keys_pressed[pygame.K_a]and red.x-VEL>0: #left
+        red.x-=VEL
+
+    if keys_pressed[pygame.K_s]and red.y+VEL+red.height<HEIGHT-15: #down
+        red.y-=VEL
     
-    if keys_pressed[pygame.K_d]and yellow.x+VEL+red.width<BORDER.x: #right
+    if keys_pressed[pygame.K_d]and red.x+VEL+red.width<BORDER.x: #right
         red.x+=VEL
 
     if keys_pressed[pygame.K_w]and red.y-VEL>0: #up
@@ -86,6 +86,8 @@ def main():
                 run=False
         keys_pressed=pygame.key.get_pressed()
         yellow_handle_movment(keys_pressed,yellow)
+        red_handle_movment(keys_pressed,red)
+        
         draw_window(yellow,red)
     pygame.quit()
 
