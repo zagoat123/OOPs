@@ -33,8 +33,21 @@ YELLOW_SPACESHIP_IMAGE=pygame.image.load(os.path.join("assets","yellow.jpeg"))
 RED_SPACESHIP_IMAGE=pygame.image.load(os.path.join("assets","red.jpeg"))
 
 YELLOW_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP_IMAGE,(spaceship_width,spaceship_height)),90)
-
 RED_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMAGE,(spaceship_width,spaceship_height)),-90)
+
+def yellow_handle_movment(keys_pressed,yellow):
+    if keys_pressed[pygame.k_a]and yellow.x-VEL>0: #left
+        yellow.x-=VEL
+
+    if keys_pressed[pygame.k_s]and yellow.y-VEL+yellow.height<BORDER: #down
+        yellow.y-=VEL
+    
+    if keys_pressed[pygame.k_d]and yellow.x+VEL+yellow.widthBORDER.x: #right
+        yellow.x+=VEL
+
+    if keys_pressed[pygame.k_a]and yellow.x+VEL>0: #up
+        yellow.x+=VEL
+
 
 def main():
 
